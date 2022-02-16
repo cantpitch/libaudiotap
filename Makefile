@@ -13,6 +13,9 @@ clean:
 libaudiotap.so: libaudiotap.o libaudiotap_external_symbols.o pthread_wait_event.o
 	$(CC) -shared -o $@ $^ -ldl $(LDFLAGS)
 
+libaudiotap.dylib: libaudiotap.o libaudiotap_external_symbols.o pthread_wait_event.o
+	$(CC) -dynamiclib -o $@ $^ -ldl $(LDFLAGS)
+
 ifdef DEBUG
  CFLAGS+=-g
 endif
